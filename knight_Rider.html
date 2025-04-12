@@ -2,9 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Knight Rider</title>
+
+    <link rel="stylesheet" href="../assets/lib/normalize.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            color: red;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 36px;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        .light-bar {
+            display: flex;
+            border-top: 2px solid gray;
+            border-bottom: 2px solid gray;
+            padding: 10px 0;
+        }
+
+        .light {
+            width: 120px;
+            height: 60px;
+            margin: 5px 5px;
+            background-color: white;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+    </style>
 </head>
 <body>
+
+<h1>JavaScript Knight Rider</h1>
+
+<div class="light-bar">
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+</div>
+
+<script>
+    const frames = [
+        ["red", "pink", "white", "white", "white", "white", "white"],
+        ["pink", "red", "pink", "white", "white", "white", "white"],
+        ["white", "pink", "red", "pink", "white", "white", "white"],
+        ["white", "white", "pink", "red", "pink", "white", "white"],
+        ["white", "white", "white", "pink", "red", "pink", "white"],
+        ["white", "white", "white", "white", "pink", "red", "pink"],
+        ["white", "white", "white", "white", "white", "pink", "red"],
+        ["white", "white", "white", "white", "pink", "red", "pink"],
+        ["white", "white", "white", "pink", "red", "pink", "white"],
+        ["white", "white", "pink", "red", "pink", "white", "white"],
+        ["white", "pink", "red", "pink", "white", "white", "white"],
+        ["pink", "red", "pink", "white", "white", "white", "white"],
+        ["red", "pink", "white", "white", "white", "white", "white"]
+    ];
+
+    let cells = document.getElementsByClassName('light');
+    let frame = 0;
+
+    const animate = () => {
+        let current = frames[frame];
+
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].style.backgroundColor = current[i];
+        }
+
+        frame++;
+        if (frame >= frames.length) {
+            frame = 0;
+        }
+    };
+
+    setInterval(animate, 150);
+</script>
 
 </body>
 </html>
